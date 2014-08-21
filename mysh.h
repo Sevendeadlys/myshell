@@ -6,6 +6,7 @@
 #define EXECVE_IN_BG 1
 #define EXECVE_IN_FG 0
 #define MAXNAME 20
+#define MAXARGC 100
 
 #define INIT_TASK_STRUCT(name) (&name)
 #define for_each(root,p,func,sig) do{ \
@@ -21,7 +22,7 @@ typedef struct task_stuct
     struct task_stuct *next;
 }task_stuct,*ptask_struct;
 
-inline void taskop(pid_t pid,int bg,task_struct* node);
+void taskop(pid_t pid,int bg,task_struct* node);
 void add_tail_to_task(task_struct* head,task_struct* node);
 void delete_node(task_struct* node);
 task_struct* search_task_by_pid(task_struct* head,int pid);

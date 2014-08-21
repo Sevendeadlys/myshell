@@ -14,7 +14,28 @@ void* Malloc(unsigned int size)
     return p;
 }
 
-inline void taskop(char *name,pid_t pid,int bg,task_struct* node)
+int parseline(char* line,char** argv)
+{
+    char *p,*q,*pos;
+    int count;
+
+    p = line;
+    q = *argv;
+
+    while(*p && *p == ' ') p++;
+
+    for(; *p && *p != '\n'; p++)
+    {
+        pos = strchr(p,' ');
+        *pos = '\0';
+        strcpy(q,p);
+
+        while(*p && *p == ' ')p++;
+    }
+
+}
+
+void taskop(char *name,pid_t pid,int bg,task_struct* node)
 {
     strcpy(node->name,name);
     node->pid = pid;
