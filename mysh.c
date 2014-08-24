@@ -31,6 +31,7 @@ int parseline(char* line,char** argv)
         strcpy(q,p);
 
         while(*p && *p == ' ')p++;
+        
     }
 
 }
