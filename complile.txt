@@ -1,0 +1,15 @@
+mysh.c:52:6: error: conflicting types for ‘taskop’
+mysh.h:27:6: note: previous declaration of ‘taskop’ was here
+mysh.c: In function ‘add_tail_to_task’:
+mysh.c:63:14: error: dereferencing pointer to incomplete type
+mysh.c:65:16: warning: assignment from incompatible pointer type [enabled by default]
+mysh.c:66:15: warning: assignment from incompatible pointer type [enabled by default]
+mysh.c: In function ‘delete_node’:
+mysh.c:71:15: error: dereferencing pointer to incomplete type
+mysh.c:72:14: error: dereferencing pointer to incomplete type
+mysh.c: In function ‘search_task_by_pid’:
+mysh.c:80:11: warning: assignment from incompatible pointer type [enabled by default]
+mysh.c:80:36: warning: assignment from incompatible pointer type [enabled by default]
+mysh.c: In function ‘search_task_by_index’:
+mysh.c:95:11: warning: assignment from incompatible pointer type [enabled by default]
+mysh.c:95:36: warning: assignment from incompatible pointer type [enabled by default]
