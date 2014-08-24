@@ -1,5 +1,5 @@
-#ifdef  _MY_SHELL_H__
-#define _MY_SHELL_H__ 
+#ifndef  _MY_SHELL_H__
+#define _MY_SHELL_H__
 
 #include "csapp.h"
 
@@ -13,16 +13,17 @@
    for(;p != root;p = p->next) func(p->pid,sig); \
 }while(0)
 
-typedef struct task_stuct
-{
+typedef struct task_node{
     char name[MAXNAME];
     pid_t pid;
     int bg;
-    struct task_stuct *pre;
-    struct task_stuct *next;
-}task_stuct,*ptask_struct;
+    struct task_node *pre;
+    struct task_node *next;
+}task_struct;
 
-void taskop(pid_t pid,int bg,task_struct* node);
+void* Malloc(unsigned int size);
+int parseline(char* line,char** argv);
+void taskop(char *name,pid_t pid,int bg,task_struct* node);
 void add_tail_to_task(task_struct* head,task_struct* node);
 void delete_node(task_struct* node);
 task_struct* search_task_by_pid(task_struct* head,int pid);

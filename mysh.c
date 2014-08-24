@@ -1,39 +1,43 @@
 #include "mysh.h"
 
-
-void* Malloc(unsigned int size)
-{
-    void *p;
-
-    p = malloc(size);
-    if(!p)
-    {
-        printf("malloc error\n");
-        exit(0)
-    }
-    return p;
-}
-
 int parseline(char* line,char** argv)
 {
-    char *p,*q,*pos;
-    int count;
+    char *p,*pos;
+    int count = 0;
+    int bg = 0;
 
     p = line;
-    q = *argv;
 
     while(*p && *p == ' ') p++;
 
-    for(; *p && *p != '\n'; p++)
+    while((pos = strchr(p,' ')))
     {
-        pos = strchr(p,' ');
         *pos = '\0';
-        strcpy(q,p);
-
+        argv[count] = p;
+        count ++;
+        p = pos + 1;
         while(*p && *p == ' ')p++;
-        
+    }
+    if(*p)
+    {
+        argv[count] = p;
+        count ++;
     }
 
+    if(count == 0)
+    {
+        printf("error input!\n");
+        return -1;
+    }
+
+    if(argv[count - 1][0] == '&')
+    {
+        bg = 1;
+        count = count - 1;
+    }
+    argv[count] = NULL;
+
+    return bg;
 }
 
 void taskop(char *name,pid_t pid,int bg,task_struct* node)
