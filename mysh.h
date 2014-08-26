@@ -21,7 +21,6 @@ typedef struct task_node{
     struct task_node *next;
 }task_struct;
 
-void* Malloc(unsigned int size);
 int parseline(char* line,char** argv);
 void taskop(char *name,pid_t pid,int bg,task_struct* node);
 void add_tail_to_task(task_struct* head,task_struct* node);
