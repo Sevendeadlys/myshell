@@ -31,7 +31,6 @@ int main(int argc,char**argv)
                 Execve(arg[0],arg,environ);
                 memset(buf,0,MAXBUF);
                 n = 0;
-                exit(0);
             }
             node = (task_struct*)Malloc(sizeof(task_struct));
             taskop(arg[0],pid,bg,node);
