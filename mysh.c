@@ -1,9 +1,17 @@
 #include "mysh.h"
 
-task_func   *froot;
+task_func   froot[MAXFUNC] = \
+{
+    {"fg",fgbg_func},{"bg",fgbg_func},{"quit",quit_func},
+};
 task_struct *root;
 
 
+int quit_func(char** argv);
+int fgbg_func(char** argv);
+int task_func(char** argv); 
+
+void init_func_table();
 
 void handlerSigint()
 {
